@@ -1,0 +1,19 @@
+plugins:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+Rails/OutputSafety:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: true
+  CountComments: false 
