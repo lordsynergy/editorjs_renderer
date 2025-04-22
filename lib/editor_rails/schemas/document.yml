@@ -1,0 +1,9 @@
+# schemas/document.yml
+
+type: object
+required:
+  - time
+  - blocks
+properties:
+  blocks:
+    type: array
