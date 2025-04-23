@@ -1,9 +1,28 @@
-# schemas/document.yml
+# lib/editor_rails/schemas/document.yml
 
 type: object
 required:
   - time
   - blocks
 properties:
+  time:
+    type: string
   blocks:
     type: array
+    items:
+      type: object
+      required:
+        - id
+        - type
+        - data
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        data:
+          type: object
+        tunes:
+          type: object
+          additionalProperties: true
+      additionalProperties: false

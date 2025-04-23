@@ -7,8 +7,14 @@ RSpec.describe EditorRails::Document do
     {
       "time" => "12345678",
       "blocks" => [
-        { "type" => "paragraph", "data" => { "text" => "Hello <world>" } }
-      ]
+        {
+          "id" => "abc123",
+          "type" => "paragraph",
+          "data" => { "text" => "Hello <world>" },
+          "tunes" => {}
+        }
+      ],
+      "version" => "2.0"
     }
   end
 
@@ -32,8 +38,18 @@ RSpec.describe EditorRails::Document do
   describe "#parse_blocks" do
     let(:data_with_unknown_block) do
       valid_data.merge("blocks" => [
-                         { "type" => "unknown", "data" => {} },
-                         { "type" => "paragraph", "data" => { "text" => "Hi" } }
+                         {
+                           "id" => "block-1",
+                           "type" => "unknown",
+                           "data" => {},
+                           "tunes" => {}
+                         },
+                         {
+                           "id" => "block-2",
+                           "type" => "paragraph",
+                           "data" => { "text" => "Hi" },
+                           "tunes" => {}
+                         }
                        ])
     end
 
