@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-## [0.2.0] - 2025-04-23
+## [0.2.1] - 2025-04-23
 
 ### Added
 - New block: `Spoiler` – supports nested content via recursive rendering of inner `Document`.
