@@ -9,17 +9,18 @@ module EditorRails
   #   document = EditorRails::Document.new(editorjs_data)
   #   document.render(format: :html)
   class Document
-    attr_reader :blocks
-
     def initialize(editorjs_data)
       @editorjs_data = editorjs_data
-      validate!
-      @blocks = parse_blocks(editorjs_data["blocks"])
+      @blocks = nil
     end
 
     def render(format: :html)
-      renderer = renderer_for(format)
-      renderer.render(@blocks)
+      renderer_for(format).render(blocks)
+    end
+
+    def blocks
+      validate!
+      @blocks ||= parse_blocks(@editorjs_data["blocks"])
     end
 
     private

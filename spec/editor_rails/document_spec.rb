@@ -47,9 +47,8 @@ RSpec.describe EditorRails::Document do
 
   describe "validate" do
     it "raises on invalid document structure" do
-      expect do
-        described_class.new({ "blocks" => [] })
-      end.to raise_error(EditorRails::Errors::InvalidDocument)
+      doc = described_class.new({ "blocks" => [] })
+      expect { doc.blocks }.to raise_error(EditorRails::Errors::InvalidDocument)
     end
   end
 end

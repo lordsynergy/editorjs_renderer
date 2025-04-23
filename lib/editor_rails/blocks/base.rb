@@ -9,11 +9,8 @@ module EditorRails
     #
     # @abstract
     class Base
-      attr_reader :block_data
-
       def initialize(block_data)
         @block_data = block_data
-        validate!
       end
 
       def to_html
@@ -24,19 +21,24 @@ module EditorRails
         raise NotImplementedError
       end
 
+      def block_data
+        validate!
+        @block_data
+      end
+
+      private
+
       def validate!
         raise Errors::InvalidBlock, "Anonymous block class has no name" unless self.class.name
 
         schema = schema_for(self.class.name)
         EditorRails::SchemaValidator.validate!(
-          data: block_data,
+          data: @block_data,
           schema: schema,
           error_class: Errors::InvalidBlock,
           context: self.class.name
         )
       end
-
-      private
 
       def schema_for(class_name)
         schema_file = "#{class_name.demodulize.underscore}.yml"
