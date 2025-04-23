@@ -11,7 +11,7 @@ module EditorRails
 
     def initialize
       @schemas_path = File.join(EditorRails.root, "lib", "editor_rails", "schemas")
-      @enabled_blocks = %w[paragraph]
+      @enabled_blocks = %w[paragraph spoiler]
     end
   end
 end
