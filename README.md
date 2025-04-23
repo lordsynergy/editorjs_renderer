@@ -60,7 +60,7 @@ document.render(format: :plain)
 The gem includes a default schema for the `paragraph` block, located at:
 
 ```
-lib/editor_rails/schemas/
+lib/editorjs_renderer/schemas/
 ```
 
 You can configure enabled block types and schema path:
@@ -114,7 +114,7 @@ end
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/lordsynergy/editor_rails.
+Bug reports and pull requests are welcome on GitHub at https://github.com/lordsynergy/editorjs_renderer.
 
 ---
 
