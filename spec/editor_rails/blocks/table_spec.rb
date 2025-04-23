@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails::Blocks::Table do
+RSpec.describe EditorjsRenderer::Blocks::Table do
   let(:valid_data) do
     {
       "content" => [
@@ -41,7 +41,7 @@ RSpec.describe EditorRails::Blocks::Table do
     it "raises if content is missing" do
       expect do
         described_class.new({}).to_html
-      end.to raise_error(EditorRails::Errors::InvalidBlock, /is invalid/)
+      end.to raise_error(EditorjsRenderer::Errors::InvalidBlock, /is invalid/)
     end
   end
 end

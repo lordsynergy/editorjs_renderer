@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails::Blocks::Spoiler do
+RSpec.describe EditorjsRenderer::Blocks::Spoiler do
   let(:valid_block_data) do
     {
       "caption" => "Read more",
@@ -50,7 +50,7 @@ RSpec.describe EditorRails::Blocks::Spoiler do
 
       expect do
         described_class.new(data).to_html
-      end.to raise_error(EditorRails::Errors::InvalidBlock, /is invalid/)
+      end.to raise_error(EditorjsRenderer::Errors::InvalidBlock, /is invalid/)
     end
 
     it "raises if content.blocks is missing" do
@@ -59,7 +59,7 @@ RSpec.describe EditorRails::Blocks::Spoiler do
 
       expect do
         described_class.new(data).to_plain
-      end.to raise_error(EditorRails::Errors::InvalidBlock, /is invalid/)
+      end.to raise_error(EditorjsRenderer::Errors::InvalidBlock, /is invalid/)
     end
   end
 

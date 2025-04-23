@@ -1,4 +1,4 @@
-# lib/editor_rails/schemas/spoiler.yml
+# lib/editorjs_renderer/schemas/spoiler.yml
 
 type: object
 required:

@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails::Blocks::Paragraph do
+RSpec.describe EditorjsRenderer::Blocks::Paragraph do
   let(:block) { described_class.new("text" => "Hello <world>") }
 
   describe "#to_html" do
@@ -20,11 +20,11 @@ RSpec.describe EditorRails::Blocks::Paragraph do
   describe "validation" do
     context "when required key is missing" do
       it "raises InvalidBlock when calling to_html" do
-        expect { described_class.new({}).to_html }.to raise_error(EditorRails::Errors::InvalidBlock)
+        expect { described_class.new({}).to_html }.to raise_error(EditorjsRenderer::Errors::InvalidBlock)
       end
 
       it "raises InvalidBlock when calling to_plain" do
-        expect { described_class.new({}).to_plain }.to raise_error(EditorRails::Errors::InvalidBlock)
+        expect { described_class.new({}).to_plain }.to raise_error(EditorjsRenderer::Errors::InvalidBlock)
       end
     end
 

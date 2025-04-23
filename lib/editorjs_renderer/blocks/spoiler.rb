@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/blocks/spoiler.rb
-module EditorRails
+# lib/editorjs_renderer/blocks/spoiler.rb
+module EditorjsRenderer
   module Blocks
     # Spoiler block rendering logic.
     #
@@ -25,7 +25,7 @@ module EditorRails
     # @example Plain text output
     #   Title: Nested text...
     #
-    # @see EditorRails::Blocks::Base
+    # @see EditorjsRenderer::Blocks::Base
     class Spoiler < Base
       def to_html
         caption = ERB::Util.html_escape(block_data["caption"])

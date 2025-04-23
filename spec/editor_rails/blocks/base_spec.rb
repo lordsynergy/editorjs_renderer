@@ -2,8 +2,8 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails::Blocks::Base do
-  let(:schema_path) { File.join(EditorRails.config.schemas_path, "dummy_block.yml") }
+RSpec.describe EditorjsRenderer::Blocks::Base do
+  let(:schema_path) { File.join(EditorjsRenderer.config.schemas_path, "dummy_block.yml") }
   let(:dummy_block_class) do
     Class.new(described_class) do
       def to_html
@@ -26,7 +26,7 @@ RSpec.describe EditorRails::Blocks::Base do
           type: string
     YAML
 
-    stub_const("EditorRails::Blocks::DummyBlock", dummy_block_class)
+    stub_const("EditorjsRenderer::Blocks::DummyBlock", dummy_block_class)
   end
 
   after { FileUtils.rm_f(schema_path) }
@@ -58,23 +58,23 @@ RSpec.describe EditorRails::Blocks::Base do
       end
 
       it "raises InvalidBlock when schema is missing" do
-        stub_const("EditorRails::Blocks::BrokenBlock", broken_class)
-        block = EditorRails::Blocks::BrokenBlock.new({ "x" => 1 })
+        stub_const("EditorjsRenderer::Blocks::BrokenBlock", broken_class)
+        block = EditorjsRenderer::Blocks::BrokenBlock.new({ "x" => 1 })
 
-        expect { block.to_html }.to raise_error(EditorRails::Errors::InvalidBlock, /Missing schema file/)
+        expect { block.to_html }.to raise_error(EditorjsRenderer::Errors::InvalidBlock, /Missing schema file/)
       end
     end
 
     context "when required field is missing" do
       it "raises InvalidBlock error on usage" do
-        block = EditorRails::Blocks::DummyBlock.new({})
-        expect { block.to_html }.to raise_error(EditorRails::Errors::InvalidBlock, /is invalid/)
+        block = EditorjsRenderer::Blocks::DummyBlock.new({})
+        expect { block.to_html }.to raise_error(EditorjsRenderer::Errors::InvalidBlock, /is invalid/)
       end
     end
 
     context "when required fields are present" do
       it "does not raise" do
-        block = EditorRails::Blocks::DummyBlock.new("foo" => "bar")
+        block = EditorjsRenderer::Blocks::DummyBlock.new("foo" => "bar")
         expect { block.to_html }.not_to raise_error
       end
     end

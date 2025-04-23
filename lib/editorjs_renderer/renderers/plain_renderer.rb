@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/renderers/plain_renderer.rb
-module EditorRails
+# lib/editorjs_renderer/renderers/plain_renderer.rb
+module EditorjsRenderer
   module Renderers
     # Renders an array of block objects to plain text output.
     # Used for indexing, previews, or fallback content.

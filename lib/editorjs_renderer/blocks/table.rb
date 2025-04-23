@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/blocks/table.rb
-module EditorRails
+# lib/editorjs_renderer/blocks/table.rb
+module EditorjsRenderer
   module Blocks
     # Table block rendering logic.
     # Converts a 2D array into HTML <table> and plain text.

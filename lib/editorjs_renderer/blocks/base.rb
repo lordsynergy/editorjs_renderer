@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/blocks/base.rb
-module EditorRails
+# lib/editorjs_renderer/blocks/base.rb
+module EditorjsRenderer
   module Blocks
-    # Abstract base class for all EditorRails blocks.
+    # Abstract base class for all EditorjsRenderer blocks.
     # Implements schema validation using JSON Schemer and requires subclasses
     # to implement `render` (HTML) and `plain` (text) output methods.
     #
@@ -32,7 +32,7 @@ module EditorRails
         raise Errors::InvalidBlock, "Anonymous block class has no name" unless self.class.name
 
         schema = schema_for(self.class.name)
-        EditorRails::SchemaValidator.validate!(
+        EditorjsRenderer::SchemaValidator.validate!(
           data: @block_data,
           schema: schema,
           error_class: Errors::InvalidBlock,
@@ -42,7 +42,7 @@ module EditorRails
 
       def schema_for(class_name)
         schema_file = "#{class_name.demodulize.underscore}.yml"
-        schema_path = File.join(EditorRails.config.schemas_path, schema_file)
+        schema_path = File.join(EditorjsRenderer.config.schemas_path, schema_file)
         raise Errors::InvalidBlock, "Missing schema file for #{class_name}" unless File.exist?(schema_path)
 
         YAML.load_file(schema_path)

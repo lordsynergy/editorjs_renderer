@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails do
+RSpec.describe EditorjsRenderer do
   describe "VERSION" do
     it "is defined as a String" do
       expect(described_class::VERSION).to be_a(String)

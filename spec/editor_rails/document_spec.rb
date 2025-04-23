@@ -2,7 +2,7 @@
 
 require "spec_helper"
 
-RSpec.describe EditorRails::Document do
+RSpec.describe EditorjsRenderer::Document do
   let(:valid_data) do
     {
       "time" => "12345678",
@@ -31,7 +31,7 @@ RSpec.describe EditorRails::Document do
 
     it "raises on unknown format" do
       doc = described_class.new(valid_data)
-      expect { doc.render(format: :markdown) }.to raise_error(EditorRails::Errors::UnsupportedFormat)
+      expect { doc.render(format: :markdown) }.to raise_error(EditorjsRenderer::Errors::UnsupportedFormat)
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe EditorRails::Document do
                        ])
     end
 
-    before { EditorRails.config.enabled_blocks = %w[paragraph] }
+    before { EditorjsRenderer.config.enabled_blocks = %w[paragraph] }
 
     it "skips unsupported blocks" do
       doc = described_class.new(data_with_unknown_block)
@@ -64,7 +64,7 @@ RSpec.describe EditorRails::Document do
   describe "validate" do
     it "raises on invalid document structure" do
       doc = described_class.new({ "blocks" => [] })
-      expect { doc.blocks }.to raise_error(EditorRails::Errors::InvalidDocument)
+      expect { doc.blocks }.to raise_error(EditorjsRenderer::Errors::InvalidDocument)
     end
   end
 end

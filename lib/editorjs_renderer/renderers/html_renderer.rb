@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/renderers/html_renderer.rb
-module EditorRails
+# lib/editorjs_renderer/renderers/html_renderer.rb
+module EditorjsRenderer
   module Renderers
     # Renders an array of block objects to HTML output.
-    # Used internally by `EditorRails::Document`.
+    # Used internally by `EditorjsRenderer::Document`.
     module HtmlRenderer
       def self.render(blocks)
         blocks.map(&:to_html).join("\n").html_safe

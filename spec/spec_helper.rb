@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "editor_rails"
+require "editorjs_renderer"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

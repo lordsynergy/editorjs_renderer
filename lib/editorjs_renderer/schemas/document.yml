@@ -1,4 +1,4 @@
-# lib/editor_rails/schemas/document.yml
+# lib/editorjs_renderer/schemas/document.yml
 
 type: object
 required:

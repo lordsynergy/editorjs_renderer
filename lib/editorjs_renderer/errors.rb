@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/errors.rb
-# Contains custom error classes used throughout EditorRails.
-module EditorRails
-  # Custom error namespace for all EditorRails-specific exceptions.
+# lib/editorjs_renderer/errors.rb
+# Contains custom error classes used throughout EditorjsRenderer.
+module EditorjsRenderer
+  # Custom error namespace for all EditorjsRenderer-specific exceptions.
   module Errors
     # Raised when the EditorJS document structure is invalid.
     class InvalidDocument < StandardError; end

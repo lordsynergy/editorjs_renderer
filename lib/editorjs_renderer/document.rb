@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/document.rb
-module EditorRails
+# lib/editorjs_renderer/document.rb
+module EditorjsRenderer
   # Represents an EditorJS document parsed from a Hash or JSON structure.
   # Validates the document structure and renders its blocks using configured renderers.
   #
   # @example Rendering HTML
-  #   document = EditorRails::Document.new(editorjs_data)
+  #   document = EditorjsRenderer::Document.new(editorjs_data)
   #   document.render(format: :html)
   class Document
     def initialize(editorjs_data)
@@ -33,29 +33,29 @@ module EditorRails
       klass = block_class(block_data["type"])
       klass.new(block_data["data"])
     rescue StandardError => e
-      EditorRails.logger.warn("Invalid block skipped: #{e.message}")
+      EditorjsRenderer.logger.warn("Invalid block skipped: #{e.message}")
       nil
     end
 
     def block_class(type)
-      unless EditorRails.config.enabled_blocks.include?(type)
+      unless EditorjsRenderer.config.enabled_blocks.include?(type)
         raise Errors::UnsupportedBlockType, "Unsupported block type: #{type}"
       end
 
-      EditorRails::Blocks.const_get(type.camelize)
+      EditorjsRenderer::Blocks.const_get(type.camelize)
     end
 
     def renderer_for(format)
       case format
-      when :html then EditorRails::Renderers::HtmlRenderer
-      when :plain then EditorRails::Renderers::PlainRenderer
+      when :html then EditorjsRenderer::Renderers::HtmlRenderer
+      when :plain then EditorjsRenderer::Renderers::PlainRenderer
       else raise Errors::UnsupportedFormat, "Unsupported format: #{format}"
       end
     end
 
     def validate!
-      schema = YAML.load_file(File.join(EditorRails.config.schemas_path, "document.yml"))
-      EditorRails::SchemaValidator.validate!(
+      schema = YAML.load_file(File.join(EditorjsRenderer.config.schemas_path, "document.yml"))
+      EditorjsRenderer::SchemaValidator.validate!(
         data: @editorjs_data,
         schema: schema,
         error_class: Errors::InvalidDocument,

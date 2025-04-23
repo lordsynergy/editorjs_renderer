@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# lib/editor_rails/schema_validator.rb
-module EditorRails
+# lib/editorjs_renderer/schema_validator.rb
+module EditorjsRenderer
   # Provides schema validation using JSON Schema via the `json_schemer` gem.
-  # This module is used by EditorRails::Document and block classes to validate
+  # This module is used by EditorjsRenderer::Document and block classes to validate
   # structure and content of incoming EditorJS data against YAML-defined schemas.
   #
   # @api internal
@@ -19,10 +19,10 @@ module EditorRails
     # @raise [StandardError] instance of provided error_class with detailed message
     #
     # @example
-    #   EditorRails::SchemaValidator.validate!(
+    #   EditorjsRenderer::SchemaValidator.validate!(
     #     data: { "time" => 123456, "blocks" => [] },
     #     schema: YAML.load_file("schema.yml"),
-    #     error_class: EditorRails::Errors::InvalidDocument,
+    #     error_class: EditorjsRenderer::Errors::InvalidDocument,
     #     context: "EditorJS Document"
     #   )
     def self.validate!(params)

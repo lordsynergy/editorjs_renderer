@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-# editor_rails.gemspec
-require_relative "lib/editor_rails/version"
+# editorjs_renderer.gemspec
+require_relative "lib/editorjs_renderer/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "editor_rails"
-  spec.version = EditorRails::VERSION
+  spec.name = "editorjs_renderer"
+  spec.version = EditorjsRenderer::VERSION
   spec.authors = ["Georgy Shcherbakov", "Sergey Arkhipov"]
   spec.email = %w[lordsynergymail@gmail.com sergey-arkhipov@ya.ru]
 
