@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
-# editor_rails.gemspec
-require_relative "lib/editor_rails/version"
+# editorjs_renderer.gemspec
+require_relative "lib/editorjs_renderer/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "editor_rails"
-  spec.version = EditorRails::VERSION
-  spec.authors = ["Georgy Shcherbakov", "Sergey Arkhipov"]
-  spec.email = %w[lordsynergymail@gmail.com sergey-arkhipov@ya.ru]
+  spec.name = "editorjs_renderer"
+  spec.version = EditorjsRenderer::VERSION
+  spec.authors = ["Georgy Shcherbakov", "Sergey Arkhipov", "Grigory Paraschevin"]
+  spec.email = %w[lordsynergymail@gmail.com sergey-arkhipov@ya.ru nedprofit@gmail.com]
 
   spec.summary = "Editor.js renderer for Ruby on Rails"
   spec.description = "Library for rendering and validating Editor.js documents in Rails applications"
-  spec.homepage = "https://github.com/lordsynergy/editor_rails"
+  spec.homepage = "https://github.com/lordsynergy/editorjs_renderer"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.4"
 

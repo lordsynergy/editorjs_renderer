@@ -9,6 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+---
+
+## [0.2.1] - 2025-04-23
+
+### Added
+- New block: `Spoiler` – supports nested content via recursive rendering of inner `Document`.
+- New block: `Table` – renders as HTML `<table>` or plain text with pipe-delimited rows.
+- YAML schemas for `spoiler.yml` and `table.yml`, with validation on required structure.
+- Full test coverage for `Spoiler` and `Table` blocks, including deep nesting scenarios.
+- Support for nested blocks within blocks (recursive `Document` rendering).
+- Improved error messages for validation failures.
+
+### Changed
+- `Document` now validates block structure more strictly (e.g., `id`, `type`, `data`, `tunes`).
+- Validation is no longer performed in block `initialize`, but deferred to `block_data` access.
+
+### Fixed
+- Multiple RuboCop and RSpec style issues (e.g., multiple expectations per example).
+- Schema for `paragraph` block now validated only within its `data`.
+
+---
+
 ### Added
 - Initial support for rendering Editor.js blocks (`paragraph`) in HTML and plain text.
 - JSON schema validation for documents and blocks.
@@ -21,4 +43,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] - 2025-04-22
 
 ### Added
-- First public release of the `editor_rails` gem.
+- First public release of the `editorjs_renderer` gem.

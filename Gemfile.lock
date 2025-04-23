@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    editor_rails (0.1.0)
+    editorjs_renderer (0.2.1)
       actionview (~> 8.0)
       activesupport (~> 8.0)
       json_schemer (~> 2.4.0)
@@ -132,7 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 2.0)
-  editor_rails!
+  editorjs_renderer!
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.0)

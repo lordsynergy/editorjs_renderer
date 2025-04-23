@@ -1,0 +1,12 @@
+# lib/editorjs_renderer/schemas/table.yml
+
+type: object
+required:
+  - content
+properties:
+  content:
+    type: array
+    items:
+      type: array
+      items:
+        type: string
