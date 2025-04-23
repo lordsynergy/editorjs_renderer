@@ -7,7 +7,7 @@ module EditorRails
     # Used internally by `EditorRails::Document`.
     module HtmlRenderer
       def self.render(blocks)
-        blocks.map(&:render).join("\n").html_safe
+        blocks.map(&:to_html).join("\n").html_safe
       end
     end
   end

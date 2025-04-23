@@ -25,7 +25,7 @@ module EditorRails
     private
 
     def parse_blocks(blocks_data)
-      blocks_data.filter_map { |block_data| build_block(block_data) }
+      blocks_data.filter_map { build_block(it) }
     end
 
     def build_block(block_data)

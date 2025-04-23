@@ -9,18 +9,18 @@ module EditorRails
     #
     # @abstract
     class Base
-      attr_reader :data
+      attr_reader :block_data
 
-      def initialize(data)
-        @data = data
+      def initialize(block_data)
+        @block_data = block_data
         validate!
       end
 
-      def render
+      def to_html
         raise NotImplementedError
       end
 
-      def plain
+      def to_plain
         raise NotImplementedError
       end
 
@@ -29,7 +29,7 @@ module EditorRails
 
         schema = schema_for(self.class.name)
         EditorRails::SchemaValidator.validate!(
-          data: data,
+          data: block_data,
           schema: schema,
           error_class: Errors::InvalidBlock,
           context: self.class.name

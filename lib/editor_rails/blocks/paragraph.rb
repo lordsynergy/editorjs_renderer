@@ -10,12 +10,12 @@ module EditorRails
     #
     # @see EditorRails::Blocks::Base
     class Paragraph < Base
-      def render
-        "<p>#{ERB::Util.html_escape(data["text"])}</p>"
+      def to_html
+        "<p>#{ERB::Util.html_escape(block_data["text"])}</p>"
       end
 
-      def plain
-        data["text"].to_s
+      def to_plain
+        block_data["text"].to_s
       end
     end
   end

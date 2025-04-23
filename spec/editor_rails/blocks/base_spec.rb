@@ -6,8 +6,8 @@ RSpec.describe EditorRails::Blocks::Base do
   let(:schema_path) { File.join(EditorRails.config.schemas_path, "dummy_block.yml") }
   let(:dummy_block_class) do
     Class.new(described_class) do
-      def render; end
-      def plain; end
+      def to_html; end
+      def to_plain; end
     end
   end
 
@@ -26,8 +26,8 @@ RSpec.describe EditorRails::Blocks::Base do
     context "when schema file is missing" do
       let(:missing_block_class) do
         Class.new(described_class) do
-          def render; end
-          def plain; end
+          def to_html; end
+          def to_plain; end
         end
       end
 
@@ -57,17 +57,17 @@ RSpec.describe EditorRails::Blocks::Base do
     end
   end
 
-  describe "#render" do
+  describe "#to_html" do
     it "raises NotImplementedError by default" do
       base = described_class.allocate
-      expect { base.render }.to raise_error(NotImplementedError)
+      expect { base.to_html }.to raise_error(NotImplementedError)
     end
   end
 
-  describe "#plain" do
+  describe "#to_plain" do
     it "raises NotImplementedError by default" do
       base = described_class.allocate
-      expect { base.plain }.to raise_error(NotImplementedError)
+      expect { base.to_plain }.to raise_error(NotImplementedError)
     end
   end
 end

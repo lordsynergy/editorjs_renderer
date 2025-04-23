@@ -7,7 +7,7 @@ module EditorRails
     # Used for indexing, previews, or fallback content.
     module PlainRenderer
       def self.render(blocks)
-        blocks.map(&:plain).join("\n")
+        blocks.map(&:to_plain).join("\n")
       end
     end
   end
