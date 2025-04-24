@@ -1,0 +1,13 @@
+# lib/editorjs_renderer/schemas/header.yml
+
+type: object
+required:
+  - text
+  - level
+properties:
+  text:
+    type: string
+  level:
+    type: integer
+    minimum: 1
+    maximum: 6
