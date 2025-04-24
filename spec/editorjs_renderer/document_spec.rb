@@ -44,6 +44,10 @@ RSpec.describe EditorjsRenderer::Document do
     it "renders checklist block" do
       expect(html_output).to include("<ul class=\"checklist-block\">").and include("Buy milk")
     end
+
+    it "renders code block" do
+      expect(html_output).to include("<pre><code>def hello\n  puts &#39;world&#39;\nend</code></pre>")
+    end
   end
 
   describe "#render as plain text" do
@@ -79,6 +83,10 @@ RSpec.describe EditorjsRenderer::Document do
 
     it "includes checklist items in plain text" do
       expect(plain_output).to include("[x] Buy milk").and include("[ ] Read book")
+    end
+
+    it "includes code block in plain text" do
+      expect(plain_output).to include("def hello\n  puts 'world'\nend")
     end
   end
 

@@ -93,8 +93,15 @@
         ]
       },
       "tunes": {}
+    },
+    {
+      "id": "block-9",
+      "type": "code",
+      "data": {
+        "code": "def hello\n  puts 'world'\nend"
+      },
+      "tunes": {}
     }
-
   ],
   "version": "2.0"
 }
