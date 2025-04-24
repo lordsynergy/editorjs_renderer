@@ -36,6 +36,10 @@ RSpec.describe EditorjsRenderer::Document do
     it "renders list block" do
       expect(html_output).to include("<ol><li>First</li><li>Second</li></ol>")
     end
+
+    it "renders attaches block" do
+      expect(html_output).to include("<a href=\"https://example.com/report.pdf\"").and include("Report (120.6 KB)")
+    end
   end
 
   describe "#render as plain text" do
@@ -63,6 +67,10 @@ RSpec.describe EditorjsRenderer::Document do
 
     it "includes list items as ordered plain text" do
       expect(plain_output).to include("1. First\n2. Second")
+    end
+
+    it "includes attachment in plain text" do
+      expect(plain_output).to include("[Attachment] Quarterly Report — https://example.com/report.pdf (120.6 KB)")
     end
   end
 

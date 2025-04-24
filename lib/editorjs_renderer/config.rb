@@ -11,7 +11,7 @@ module EditorjsRenderer
 
     def initialize
       @schemas_path = File.join(EditorjsRenderer.root, "lib", "editorjs_renderer", "schemas")
-      @enabled_blocks = %w[paragraph spoiler table header image list]
+      @enabled_blocks = %w[paragraph spoiler table header image list attaches]
     end
   end
 end

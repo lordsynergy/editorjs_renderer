@@ -70,6 +70,18 @@
         ]
       },
       "tunes": {}
+    },
+    {
+      "id": "block-7",
+      "type": "attaches",
+      "data": {
+        "file": {
+          "url": "https://example.com/report.pdf"
+        },
+        "title": "Quarterly Report",
+        "size": 123456
+      },
+      "tunes": {}
     }
   ],
   "version": "2.0"

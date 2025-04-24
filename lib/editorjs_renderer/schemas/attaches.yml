@@ -1,0 +1,18 @@
+# lib/editorjs_renderer/schemas/attaches.yml
+
+type: object
+required:
+  - file
+  - title
+properties:
+  file:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+  title:
+    type: string
+  size:
+    type: integer
