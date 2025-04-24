@@ -1,0 +1,8 @@
+# lib/editorjs_renderer/schemas/code.yml
+
+type: object
+required:
+  - code
+properties:
+  code:
+    type: string
