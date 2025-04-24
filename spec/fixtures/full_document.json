@@ -1,0 +1,55 @@
+{
+  "time": "12345678",
+  "blocks": [
+    {
+      "id": "block-1",
+      "type": "header",
+      "data": {
+        "text": "Main title",
+        "level": 2
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-2",
+      "type": "paragraph",
+      "data": {
+        "text": "Paragraph block"
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-3",
+      "type": "table",
+      "data": {
+        "content": [
+          ["Name", "Age"],
+          ["Alice", "30"],
+          ["Bob", "25"]
+        ]
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-4",
+      "type": "spoiler",
+      "data": {
+        "caption": "Click to reveal",
+        "content": {
+          "blocks": [
+            {
+              "id": "block-4-1",
+              "type": "paragraph",
+              "data": {
+                "text": "Spoiler content"
+              },
+              "tunes": {}
+            }
+          ]
+        }
+      },
+      "tunes": {}
+    }
+  ],
+  "version": "2.0"
+}
