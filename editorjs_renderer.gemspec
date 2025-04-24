@@ -35,6 +35,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "actionview", "~> 8.0"
   spec.add_dependency "activesupport", "~> 8.0"
   spec.add_dependency "json_schemer", "~> 2.4.0"
+  spec.add_dependency "zeitwerk", "~> 2.7"
 
   spec.metadata = {
     "homepage_uri" => spec.homepage,

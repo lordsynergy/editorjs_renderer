@@ -5,6 +5,10 @@ require "yaml"
 require "active_support/all"
 require "logger"
 require "json_schemer"
+require "zeitwerk"
+
+loader = Zeitwerk::Loader.for_gem
+loader.setup
 
 # EditorjsRenderer provides rendering and configuration logic for EditorJS-compatible
 # data in Ruby applications. It allows transforming structured block-based data
@@ -45,22 +49,3 @@ module EditorjsRenderer
     end
   end
 end
-
-require_relative "editorjs_renderer/errors"
-require_relative "editorjs_renderer/config"
-require_relative "editorjs_renderer/document"
-require_relative "editorjs_renderer/renderers/html_renderer"
-require_relative "editorjs_renderer/renderers/plain_renderer"
-require_relative "editorjs_renderer/blocks/base"
-require_relative "editorjs_renderer/blocks/paragraph"
-require_relative "editorjs_renderer/blocks/spoiler"
-require_relative "editorjs_renderer/blocks/table"
-require_relative "editorjs_renderer/blocks/header"
-require_relative "editorjs_renderer/blocks/image"
-require_relative "editorjs_renderer/blocks/list"
-require_relative "editorjs_renderer/blocks/attaches"
-require_relative "editorjs_renderer/blocks/checklist"
-require_relative "editorjs_renderer/blocks/code"
-require_relative "editorjs_renderer/blocks/delimiter"
-require_relative "editorjs_renderer/version"
-require_relative "editorjs_renderer/schema_validator"
