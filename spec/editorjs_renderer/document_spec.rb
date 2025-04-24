@@ -3,67 +3,119 @@
 require "spec_helper"
 
 RSpec.describe EditorjsRenderer::Document do
-  let(:valid_data) do
-    {
-      "time" => "12345678",
-      "blocks" => [
-        {
-          "id" => "abc123",
-          "type" => "paragraph",
-          "data" => { "text" => "Hello <world>" },
-          "tunes" => {}
-        }
-      ],
-      "version" => "2.0"
-    }
+  subject(:doc) { described_class.new(document_data) }
+
+  let(:document_data) do
+    file_path = File.expand_path("../fixtures/full_document.json", __dir__)
+    JSON.parse(File.read(file_path))
   end
 
-  describe "#render" do
-    it "renders HTML safely" do
-      doc = described_class.new(valid_data)
-      expect(doc.render(format: :html)).to include("&lt;world&gt;")
+  describe "#render as HTML" do
+    let(:html_output) { doc.render(format: :html) }
+
+    it "renders header block" do
+      expect(html_output).to include("<h2>Main title</h2>")
     end
 
-    it "renders plain text" do
-      doc = described_class.new(valid_data)
-      expect(doc.render(format: :plain)).to eq("Hello <world>")
+    it "renders paragraph block" do
+      expect(html_output).to include("Paragraph block")
     end
 
-    it "raises on unknown format" do
-      doc = described_class.new(valid_data)
+    it "renders table block" do
+      expect(html_output).to include("<table")
+    end
+
+    it "renders spoiler block" do
+      expect(html_output).to include("Click to reveal")
+    end
+
+    it "renders image block" do
+      expect(html_output).to include("<img src=\"https://example.com/image.png\"")
+    end
+
+    it "renders list block" do
+      expect(html_output).to include("<ol><li>First</li><li>Second</li></ol>")
+    end
+
+    it "renders attaches block" do
+      expect(html_output).to include("<a href=\"https://example.com/report.pdf\"").and include("Report (120.6 KB)")
+    end
+
+    it "renders checklist block" do
+      expect(html_output).to include("<ul class=\"checklist-block\">").and include("Buy milk")
+    end
+
+    it "renders code block" do
+      expect(html_output).to include("<pre><code>def hello\n  puts &#39;world&#39;\nend</code></pre>")
+    end
+
+    it "renders delimiter block" do
+      expect(html_output).to include('<hr class="delimiter-block">')
+    end
+  end
+
+  describe "#render as plain text" do
+    let(:plain_output) { doc.render(format: :plain) }
+
+    it "includes header text" do
+      expect(plain_output).to include("Main title")
+    end
+
+    it "includes paragraph text" do
+      expect(plain_output).to include("Paragraph block")
+    end
+
+    it "includes table text" do
+      expect(plain_output).to include("Name | Age")
+    end
+
+    it "includes spoiler content" do
+      expect(plain_output).to include("Spoiler content")
+    end
+
+    it "includes image caption in plain text" do
+      expect(plain_output).to include("This is an image")
+    end
+
+    it "includes list items as ordered plain text" do
+      expect(plain_output).to include("1. First\n2. Second")
+    end
+
+    it "includes attachment in plain text" do
+      expect(plain_output).to include("[Attachment] Quarterly Report — https://example.com/report.pdf (120.6 KB)")
+    end
+
+    it "includes checklist items in plain text" do
+      expect(plain_output).to include("[x] Buy milk").and include("[ ] Read book")
+    end
+
+    it "includes code block in plain text" do
+      expect(plain_output).to include("def hello\n  puts 'world'\nend")
+    end
+
+    it "includes delimiter in plain text" do
+      expect(plain_output).to include("---")
+    end
+  end
+
+  describe "#render with unknown format" do
+    it "raises an error" do
       expect { doc.render(format: :markdown) }.to raise_error(EditorjsRenderer::Errors::UnsupportedFormat)
     end
   end
 
   describe "#parse_blocks" do
-    let(:data_with_unknown_block) do
-      valid_data.merge("blocks" => [
-                         {
-                           "id" => "block-1",
-                           "type" => "unknown",
-                           "data" => {},
-                           "tunes" => {}
-                         },
-                         {
-                           "id" => "block-2",
-                           "type" => "paragraph",
-                           "data" => { "text" => "Hi" },
-                           "tunes" => {}
-                         }
-                       ])
-    end
-
     before { EditorjsRenderer.config.enabled_blocks = %w[paragraph] }
 
     it "skips unsupported blocks" do
-      doc = described_class.new(data_with_unknown_block)
       expect(doc.blocks.size).to eq(1)
     end
   end
 
   describe "validate" do
+    let(:document_data) { { "blocks" => [] } }
+
     it "raises on invalid document structure" do
-      doc = described_class.new({ "blocks" => [] })
       expect { doc.blocks }.to raise_error(EditorjsRenderer::Errors::InvalidDocument)
     end
   end

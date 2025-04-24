@@ -1,0 +1,16 @@
+# lib/editorjs_renderer/schemas/list.yml
+
+type: object
+required:
+  - style
+  - items
+properties:
+  style:
+    type: string
+    enum:
+      - unordered
+      - ordered
+  items:
+    type: array
+    items:
+      type: string

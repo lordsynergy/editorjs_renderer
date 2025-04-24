@@ -1,0 +1,113 @@
+{
+  "time": "12345678",
+  "blocks": [
+    {
+      "id": "block-1",
+      "type": "header",
+      "data": {
+        "text": "Main title",
+        "level": 2
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-2",
+      "type": "paragraph",
+      "data": {
+        "text": "Paragraph block"
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-3",
+      "type": "table",
+      "data": {
+        "content": [
+          ["Name", "Age"],
+          ["Alice", "30"],
+          ["Bob", "25"]
+        ]
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-4",
+      "type": "spoiler",
+      "data": {
+        "caption": "Click to reveal",
+        "content": {
+          "blocks": [
+            {
+              "id": "block-4-1",
+              "type": "paragraph",
+              "data": {
+                "text": "Spoiler content"
+              },
+              "tunes": {}
+            }
+          ]
+        }
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-5a",
+      "type": "delimiter",
+      "data": {},
+      "tunes": {}
+    },
+    {
+      "id": "block-5",
+      "type": "image",
+      "data": {
+        "url": "https://example.com/image.png",
+        "caption": "This is an image"
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-6",
+      "type": "list",
+      "data": {
+        "style": "ordered",
+        "items": [
+          "First",
+          "Second"
+        ]
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-7",
+      "type": "attaches",
+      "data": {
+        "file": {
+          "url": "https://example.com/report.pdf"
+        },
+        "title": "Quarterly Report",
+        "size": 123456
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-8",
+      "type": "checklist",
+      "data": {
+        "items": [
+          { "text": "Buy milk", "checked": true },
+          { "text": "Read book", "checked": false }
+        ]
+      },
+      "tunes": {}
+    },
+    {
+      "id": "block-9",
+      "type": "code",
+      "data": {
+        "code": "def hello\n  puts 'world'\nend"
+      },
+      "tunes": {}
+    }
+  ],
+  "version": "2.0"
+}
