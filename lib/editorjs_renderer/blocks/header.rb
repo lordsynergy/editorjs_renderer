@@ -10,7 +10,7 @@ module EditorjsRenderer
     #   Header.new(data).to_html # => "<h2>Title</h2>"
     class Header < Base
       def to_html
-        level = data["level"].to_i.clamp(1, 6)
+        level = block_data["level"].to_i.clamp(1, 6)
         text = ERB::Util.html_escape(block_data["text"])
         "<h#{level}>#{text}</h#{level}>"
       end
