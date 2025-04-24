@@ -3,67 +3,71 @@
 require "spec_helper"
 
 RSpec.describe EditorjsRenderer::Document do
-  let(:valid_data) do
-    {
-      "time" => "12345678",
-      "blocks" => [
-        {
-          "id" => "abc123",
-          "type" => "paragraph",
-          "data" => { "text" => "Hello <world>" },
-          "tunes" => {}
-        }
-      ],
-      "version" => "2.0"
-    }
+  subject(:doc) { described_class.new(document_data) }
+
+  let(:document_data) do
+    file_path = File.expand_path("../fixtures/full_document.json", __dir__)
+    JSON.parse(File.read(file_path))
   end
 
-  describe "#render" do
-    it "renders HTML safely" do
-      doc = described_class.new(valid_data)
-      expect(doc.render(format: :html)).to include("&lt;world&gt;")
+  describe "#render as HTML" do
+    let(:html_output) { doc.render(format: :html) }
+
+    it "renders header block" do
+      expect(html_output).to include("<h2>Main title</h2>")
     end
 
-    it "renders plain text" do
-      doc = described_class.new(valid_data)
-      expect(doc.render(format: :plain)).to eq("Hello <world>")
+    it "renders paragraph block" do
+      expect(html_output).to include("Paragraph block")
     end
 
-    it "raises on unknown format" do
-      doc = described_class.new(valid_data)
+    it "renders table block" do
+      expect(html_output).to include("<table")
+    end
+
+    it "renders spoiler block" do
+      expect(html_output).to include("Click to reveal")
+    end
+  end
+
+  describe "#render as plain text" do
+    let(:plain_output) { doc.render(format: :plain) }
+
+    it "includes header text" do
+      expect(plain_output).to include("Main title")
+    end
+
+    it "includes paragraph text" do
+      expect(plain_output).to include("Paragraph block")
+    end
+
+    it "includes table text" do
+      expect(plain_output).to include("Name | Age")
+    end
+
+    it "includes spoiler content" do
+      expect(plain_output).to include("Spoiler content")
+    end
+  end
+
+  describe "#render with unknown format" do
+    it "raises an error" do
       expect { doc.render(format: :markdown) }.to raise_error(EditorjsRenderer::Errors::UnsupportedFormat)
     end
   end
 
   describe "#parse_blocks" do
-    let(:data_with_unknown_block) do
-      valid_data.merge("blocks" => [
-                         {
-                           "id" => "block-1",
-                           "type" => "unknown",
-                           "data" => {},
-                           "tunes" => {}
-                         },
-                         {
-                           "id" => "block-2",
-                           "type" => "paragraph",
-                           "data" => { "text" => "Hi" },
-                           "tunes" => {}
-                         }
-                       ])
-    end
-
     before { EditorjsRenderer.config.enabled_blocks = %w[paragraph] }
 
     it "skips unsupported blocks" do
-      doc = described_class.new(data_with_unknown_block)
       expect(doc.blocks.size).to eq(1)
     end
   end
 
   describe "validate" do
+    let(:document_data) { { "blocks" => [] } }
+
     it "raises on invalid document structure" do
-      doc = described_class.new({ "blocks" => [] })
       expect { doc.blocks }.to raise_error(EditorjsRenderer::Errors::InvalidDocument)
     end
   end
