@@ -48,6 +48,10 @@ RSpec.describe EditorjsRenderer::Document do
     it "renders code block" do
       expect(html_output).to include("<pre><code>def hello\n  puts &#39;world&#39;\nend</code></pre>")
     end
+
+    it "renders delimiter block" do
+      expect(html_output).to include('<hr class="delimiter-block">')
+    end
   end
 
   describe "#render as plain text" do
@@ -87,6 +91,10 @@ RSpec.describe EditorjsRenderer::Document do
 
     it "includes code block in plain text" do
       expect(plain_output).to include("def hello\n  puts 'world'\nend")
+    end
+
+    it "includes delimiter in plain text" do
+      expect(plain_output).to include("---")
     end
   end
 

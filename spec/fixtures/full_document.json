@@ -51,6 +51,12 @@
       "tunes": {}
     },
     {
+      "id": "block-5a",
+      "type": "delimiter",
+      "data": {},
+      "tunes": {}
+    },
+    {
       "id": "block-5",
       "type": "image",
       "data": {
