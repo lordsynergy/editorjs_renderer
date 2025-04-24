@@ -58,6 +58,18 @@
         "caption": "This is an image"
       },
       "tunes": {}
+    },
+    {
+      "id": "block-6",
+      "type": "list",
+      "data": {
+        "style": "ordered",
+        "items": [
+          "First",
+          "Second"
+        ]
+      },
+      "tunes": {}
     }
   ],
   "version": "2.0"

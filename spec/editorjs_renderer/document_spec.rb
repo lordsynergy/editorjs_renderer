@@ -32,6 +32,10 @@ RSpec.describe EditorjsRenderer::Document do
     it "renders image block" do
       expect(html_output).to include("<img src=\"https://example.com/image.png\"")
     end
+
+    it "renders list block" do
+      expect(html_output).to include("<ol><li>First</li><li>Second</li></ol>")
+    end
   end
 
   describe "#render as plain text" do
@@ -55,6 +59,10 @@ RSpec.describe EditorjsRenderer::Document do
 
     it "includes image caption in plain text" do
       expect(plain_output).to include("This is an image")
+    end
+
+    it "includes list items as ordered plain text" do
+      expect(plain_output).to include("1. First\n2. Second")
     end
   end
 
