@@ -1,0 +1,16 @@
+# lib/editorjs_renderer/schemas/image.yml
+
+type: object
+required:
+  - url
+properties:
+  url:
+    type: string
+  caption:
+    type: string
+  withBorder:
+    type: boolean
+  withBackground:
+    type: boolean
+  stretched:
+    type: boolean

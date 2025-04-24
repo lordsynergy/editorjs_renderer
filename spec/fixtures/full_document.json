@@ -49,6 +49,15 @@
         }
       },
       "tunes": {}
+    },
+    {
+      "id": "block-5",
+      "type": "image",
+      "data": {
+        "url": "https://example.com/image.png",
+        "caption": "This is an image"
+      },
+      "tunes": {}
     }
   ],
   "version": "2.0"

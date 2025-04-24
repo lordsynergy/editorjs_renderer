@@ -28,6 +28,10 @@ RSpec.describe EditorjsRenderer::Document do
     it "renders spoiler block" do
       expect(html_output).to include("Click to reveal")
     end
+
+    it "renders image block" do
+      expect(html_output).to include("<img src=\"https://example.com/image.png\"")
+    end
   end
 
   describe "#render as plain text" do
@@ -47,6 +51,10 @@ RSpec.describe EditorjsRenderer::Document do
 
     it "includes spoiler content" do
       expect(plain_output).to include("Spoiler content")
+    end
+
+    it "includes image caption in plain text" do
+      expect(plain_output).to include("This is an image")
     end
   end
 
