@@ -1,0 +1,18 @@
+# lib/editorjs_renderer/schemas/checklist.yml
+
+type: object
+required:
+  - items
+properties:
+  items:
+    type: array
+    items:
+      type: object
+      required:
+        - text
+        - checked
+      properties:
+        text:
+          type: string
+        checked:
+          type: boolean

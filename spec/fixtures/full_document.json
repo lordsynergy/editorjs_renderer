@@ -82,7 +82,19 @@
         "size": 123456
       },
       "tunes": {}
+    },
+    {
+      "id": "block-8",
+      "type": "checklist",
+      "data": {
+        "items": [
+          { "text": "Buy milk", "checked": true },
+          { "text": "Read book", "checked": false }
+        ]
+      },
+      "tunes": {}
     }
+
   ],
   "version": "2.0"
 }
