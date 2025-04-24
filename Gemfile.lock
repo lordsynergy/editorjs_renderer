@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    editorjs_renderer (0.2.1)
+    editorjs_renderer (0.3.0)
       actionview (~> 8.0)
       activesupport (~> 8.0)
       json_schemer (~> 2.4.0)

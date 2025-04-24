@@ -10,6 +10,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ---
+## [0.3.0] - 2025-04-24
+
+### Added
+- Zeitwerk autoloader support: removed all `require_relative` statements.
+- New block: `Image` – renders `<img>` tag with optional `<figure>` and `<figcaption>`.
+- New block: `List` – renders unordered and ordered lists (`<ul>` and `<ol>`).
+- New block: `Attaches` – renders a download link with file size information.
+- New block: `Checklist` – renders a checklist with checkboxes (readonly).
+- New block: `Code` – renders multiline code block as `<pre><code>`.
+- New block: `Delimiter` – renders horizontal rule (`<hr>`).
+- Tests for all new blocks: structure validation, HTML output, plain output.
+- Extended `document_spec.rb` to verify full document rendering with all blocks.
+
+### Changed
+- Replaced manual file loading with Zeitwerk's automatic constant loading.
+
+---
 
 ## [0.2.1] - 2025-04-23
 
